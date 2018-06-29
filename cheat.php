@@ -84,24 +84,6 @@ do
 {
 	$Data = SendPOST( 'ITerritoryControlMinigameService/GetPlayerInfo', 'access_token=' . $Token );
 
-	if( isset( $Data[ 'response' ][ 'score' ] ) )
-	{
-		if( !isset( $Data[ 'response' ][ 'clan_info' ][ 'accountid' ] ) )
-		{
-			Msg( '{green}-- You are currently not representing any clan, so you are now part of SteamDB' );
-			Msg( '{green}-- Make sure to join{yellow} https://steamcommunity.com/groups/steamdb {green}on Steam' );
-
-			SendPOST( 'ITerritoryControlMinigameService/RepresentClan', 'clanid=4777282&access_token=' . $Token );
-		}
-		else if( $Data[ 'response' ][ 'clan_info' ][ 'accountid' ] != 4777282 )
-		{
-			Msg( '{green}-- If you want to support us, join our group' );
-			Msg( '{green}--{yellow} https://steamcommunity.com/groups/steamdb' );
-			Msg( '{green}-- and set us as your clan on' );
-			Msg( '{green}--{yellow} https://steamcommunity.com/saliengame/play' );
-			Msg( '{green}-- Happy farming!' );
-		}
-	}
 }
 while( !isset( $Data[ 'response' ][ 'score' ] ) && sleep( 1 ) === 0 );
 
